@@ -1,0 +1,51 @@
+{
+  "name": "agent-gates",
+  "version": "0.1.0",
+  "description": "AI 코딩 에이전트와 함께 쓰는 저장소의 작업 규칙(미정 표식, 오류 게이트, 담당 범위)을 검사하는 CLI",
+  "keywords": [
+    "cli",
+    "ai-agent",
+    "claude-code",
+    "codex",
+    "developer-experience",
+    "lint"
+  ],
+  "license": "MIT",
+  "author": "신민종 (David) <shuvama02@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smj1746/agent-gates.git"
+  },
+  "type": "module",
+  "bin": {
+    "agent-gates": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "selfcheck": "node dist/cli.js check",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build && npm run selfcheck",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.20.5",
+    "eslint": "^10.14.0",
+    "prettier": "^3.9.10",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.2",
+    "vitest": "^5.1.0"
+  }
+}

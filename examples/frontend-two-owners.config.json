@@ -1,0 +1,40 @@
+{
+  "markers": {
+    "include": ["app/**", "components/**", "lib/**", "mocks/**", "store/**", "types/**"],
+    "max": 15
+  },
+  "gates": {
+    "file": "docs/GATES.md"
+  },
+  "scope": {
+    "owners": {
+      "FE-A": [
+        "components/apply/**",
+        "app/(tabs)/calendar/**",
+        "app/apply/**",
+        "lib/api/booking.ts",
+        "mocks/handlers/booking.ts",
+        "store/useApplyStore.ts"
+      ],
+      "FE-B": [
+        "app/(user)/**",
+        "app/join/**",
+        "app/(tabs)/home/**",
+        "app/(tabs)/my/**",
+        "components/{join,home,my}/**",
+        "lib/api/member.ts",
+        "mocks/handlers/member.ts",
+        "store/useJoinStore.ts"
+      ]
+    },
+    "shared": [
+      "app/layout.tsx",
+      "app/globals.css",
+      "components/shared/**",
+      "lib/*.ts",
+      "types/api.ts",
+      "mocks/db.ts",
+      "package.json"
+    ]
+  }
+}

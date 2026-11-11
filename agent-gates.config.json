@@ -1,0 +1,7 @@
+{
+  "markers": {
+    "include": ["src/**"],
+    "exclude": ["src/core/config.ts", "src/templates.ts", "src/commands/markers.ts"],
+    "max": 0
+  }
+}
