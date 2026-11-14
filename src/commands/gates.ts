@@ -127,10 +127,14 @@ export function checkGates(text: string, config: GatesConfig, file: string): Fin
 
   for (const gate of gates) {
     if (!VALID_ID.test(gate.id)) {
+      // G- 뒤가 숫자가 아니면 형식 예시일 가능성이 높아요 (#3)
+      const hint = /^G-\d/.test(gate.id)
+        ? ''
+        : ' — 형식 예시라면 HTML 주석이나 코드 블록 안에 두세요';
       findings.push({
         level: 'error',
         rule: 'gates/bad-id',
-        message: `ID 형식이 아닙니다: ${gate.id} (G-숫자, 예: G-1)`,
+        message: `ID 형식이 아닙니다: ${gate.id} (G-숫자, 예: G-1)${hint}`,
         ...at(gate.line),
       });
     } else {

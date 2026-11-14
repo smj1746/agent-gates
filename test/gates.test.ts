@@ -104,6 +104,15 @@ describe('checkGates', () => {
     expect(rulesOf(full('G-001') + full('G-2'))).toEqual([]);
   });
 
+  it('G- 뒤가 숫자가 아니면 형식 예시 안내를 붙인다 (#3)', () => {
+    const full = (id: string) =>
+      `## ${id} | 제목\n- 상태: 활성\n- 발생 상황: a\n- 금지 경로: b\n- 대신 할 것: c\n`;
+    const messageOf = (id: string) =>
+      checkGates(full(id), config, 'docs/GATES.md').find((f) => f.rule === 'gates/bad-id')?.message;
+    expect(messageOf('G-번호')).toContain('HTML 주석이나 코드 블록');
+    expect(messageOf('G-1a')).not.toContain('HTML 주석');
+  });
+
   it('상태 값과 알 수 없는 칸을 검사한다', () => {
     const text =
       '## G-1 | 제목\n- 상태: 진행중\n- 발생 상황: a\n- 금지 경로: b\n- 대신 할 것: c\n- 메모: d\n';
