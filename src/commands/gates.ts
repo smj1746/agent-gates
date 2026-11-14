@@ -126,7 +126,7 @@ export function checkGates(text: string, config: GatesConfig, file: string): Fin
   const seenIds = new Map<string, number>();
 
   for (const gate of gates) {
-        if (!VALID_ID.test(gate.id)) {
+    if (!VALID_ID.test(gate.id)) {
       // G- 뒤가 숫자가 아니면 형식 예시일 가능성이 높아요 (#3)
       const hint = /^G-\d/.test(gate.id)
         ? ''
